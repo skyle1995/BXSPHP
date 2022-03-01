@@ -36,4 +36,5 @@ $error_reporting = false; // 屏蔽所有错误
 $nosession = false; // 关闭session 根据开发需求设置 true 开启  false关闭
 
 $sql_check = true; //开启防御SQL注入功能 true 开启  false关闭
+
 ?>
