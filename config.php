@@ -2,13 +2,13 @@
 $config = [
     // 数据库配置
     "sql_int" => array(
-        'dbms' => 'mysql', //数据库类型
-        'host' => 'localhost', //数据库服务器
-        'port' => 3306, //数据库端口
-        'name' => '', //数据库名
-        'user' => '', //数据库用户名
-        'pass' => '', //数据库密码
-        "charset" => "utf8", //数据库字节
+        'dbms' => 'mysql', // 数据库类型
+        'host' => 'localhost', // 数据库服务器
+        'port' => 3306, // 数据库端口
+        'name' => '', // 数据库名
+        'user' => '', // 数据库用户名
+        'pass' => '', // 数据库密码
+        "charset" => "utf8", // 数据库字节
     ),
     // 应用配置
     "bind" => array(
