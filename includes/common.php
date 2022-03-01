@@ -22,7 +22,7 @@ date_default_timezone_set("PRC");
 // date_default_timezone_set("Asia/Shanghai");
 
 define('SYSTEM_PATH', __DIR__.'/'); // 系统路径
-define('SYSTEM_ROOT', dirname(SYSTEM_PATH).'/'); // 系统根目录
+define('SYSTEM_ROOT', dirname(__DIR__).'/'); // 系统根目录
 
 define('CC_Defender',1);
 
