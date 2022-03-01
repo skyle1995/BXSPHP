@@ -1,17 +1,31 @@
-## BXSPHP（百晓生PHP简易框架）
-程序配置方式和ThinkPHP相同 <br/>
-将网站访问目录设置为public <br/>
-配置好config.php内容后，将sql文件导入数据库 <br/>
+## BXSPHP 1.0
 
-框架集成了一些我自己常用的模块，如果不需要的可以删除掉 <br/>
+#### 介绍
+百晓生PHP简易框架，简易，高效，便捷
 
-## 如果需要二改发布，请保留版权信息以及出处
-演示站：https://www.i80k.com
+#### 软件架构
+框架参考了ThinkPHP的工作模式开发，但更方便，更适合小型开发
 
-## 版权信息
 
-BXSPHP遵循Apache2开源协议发布，并提供免费使用。 <br/>
-版权所有 Copyright © 2015-2022 by BXSPHP (https://www.i80k.com) <br/>
-All rights reserved。 <br/>
-BXSPHP® 商标和著作权所有者为青书网络个人工作室。 <br/>
-更多细节参阅 [LICENSE](LICENSE) <br/>
+#### 安装教程
+
+1.  下载代码文件释放到网站根目录
+2.  设置网站访问目录为public
+3.  编辑config.php内容并保存
+4.  将sql数据文件导入数据库(模块支持)
+
+#### 使用说明
+
+1.  演示站：https://www.i80k.com
+2.  如果需要二改发布，请保留版权信息以及出处
+
+#### 参与贡献
+
+1.  本产品由本人(青书_log)独自完成以及开发
+
+#### 版权信息
+
+1.  BXSPHP遵循Apache2开源协议发布，并提供免费使用。 
+2.  版权所有 Copyright © 2015-2022 by BXSPHP (https://www.i80k.com) All rights reserved。 
+3.  BXSPHP® 商标和著作权所有者为青书网络个人工作室。
+4.  更多细节参阅 [LICENSE](LICENSE)
