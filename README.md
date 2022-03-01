@@ -21,11 +21,11 @@
 
 #### 参与贡献
 
-1.  本产品由本人(青书_log)独自完成以及开发
+1.  本产品由本人(百晓生)独自完成以及开发
 
 #### 版权信息
 
 1.  BXSPHP遵循Apache2开源协议发布，并提供免费使用。 
 2.  版权所有 Copyright © 2015-2022 by BXSPHP (https://www.i80k.com) All rights reserved。 
-3.  BXSPHP® 商标和著作权所有者为青书网络个人工作室。
+3.  BXSPHP® 商标和著作权所有者为百晓生个人所有。
 4.  更多细节参阅 [LICENSE](LICENSE)
