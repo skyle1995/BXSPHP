@@ -36,13 +36,13 @@ class framework
             }
         }
         
+        // 设置应用文件路径
+        define('__TEMP__', APP_PATH."/{$moduel}/");
+        
         // 判断应用是否存在
         if(!file_exists(APP_PATH."/{$moduel}/{$controller}.php")) {
             sysmsg("访问路径错误，请检查路径是否正确！","系统提醒");
         }
-        
-        // 设置应用文件路径
-        define('__TEMP__', APP_PATH."/{$moduel}/");
         
         // 开始加载应用程序
         include_once(APP_PATH."/{$moduel}/{$controller}.php");
