@@ -37,8 +37,8 @@ CREATE TABLE IF NOT EXISTS `pre_config` (
 
 INSERT INTO `pre_config` (`k`, `v`) VALUES
 ('syskey', 'YKHVGRH1'),
-('v_build', '10025'),
-('v_version', '1.3');
+('v_build', '10000'),
+('v_version', '1.0');
 
 --
 -- Indexes for dumped tables
