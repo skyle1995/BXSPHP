@@ -1,0 +1,7 @@
+复制粘贴以下静态规则到Nginx伪静态配置：
+
+location / {
+	if (!-e $request_filename){
+		rewrite  ^(.*)$  /index.php?s=$1  last;  break;
+	}
+}
