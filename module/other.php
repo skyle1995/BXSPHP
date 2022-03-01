@@ -42,6 +42,6 @@ if (count($conf_db->SQL("show tables like 'pre_config'")) == 0) {
 $site = ($_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://').$_SERVER['HTTP_HOST']; //访问地址
 $time = time();
 $date = date("Y-m-d H:i:s",$time);
-$password_hash='!@#%!s!0';
+$password_hash = '!@#%!s!0';
 $real_ip = real_ip();
 ?>
