@@ -38,7 +38,7 @@ class framework
         
         // 判断应用是否存在
         if(!file_exists(APP_PATH."/{$moduel}/{$controller}.php")) {
-			sysmsg("访问路径错误，请检查路径是否正确！","系统提醒");
+            sysmsg("访问路径错误，请检查路径是否正确！","系统提醒");
         }
         
         // 设置模板文件路径
