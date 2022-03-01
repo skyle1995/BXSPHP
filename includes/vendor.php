@@ -41,7 +41,7 @@ class framework
             sysmsg("访问路径错误，请检查路径是否正确！","系统提醒");
         }
         
-        // 设置模板文件路径
+        // 设置应用文件路径
         define('__TEMP__', APP_PATH."/{$moduel}/");
         
         // 开始加载应用程序
