@@ -6,10 +6,10 @@
  * @return cipher
 */
 function rc4($data, $pwd) {
-    $cipher            = '';
-    $key[]             = "";
-    $box[]             = "";
-    $pwd_length    = strlen($pwd);
+    $cipher      = '';
+    $key[]       = "";
+    $box[]       = "";
+    $pwd_length  = strlen($pwd);
     $data_length = strlen($data);
     for ($i = 0; $i < 256; $i++) {
         $key[$i] = ord($pwd[$i % $pwd_length]);
