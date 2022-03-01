@@ -11,7 +11,7 @@
 ## 版权信息
 
 BXSPHP遵循Apache2开源协议发布，并提供免费使用。 <br/>
-版权所有 Copyright © 2015-2022 by BXSPHP (https://www.i80k.com) <br/
+版权所有 Copyright © 2015-2022 by BXSPHP (https://www.i80k.com) <br/>
 All rights reserved。 <br/>
 BXSPHP® 商标和著作权所有者为青书网络个人工作室。 <br/>
 更多细节参阅 [LICENSE](LICENSE) <br/>
