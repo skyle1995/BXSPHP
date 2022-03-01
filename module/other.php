@@ -25,7 +25,7 @@ define('SQL_USER', $config['sql_int']['user']);
 define('SQL_PASS', $config['sql_int']['pass']);
 define('SQL_CHARSET', $config['sql_int']['charset']);
 
-if(!SQL_USER||!SQL_PASS||!SQL_DB_NAME) exit("请先配置config.php中的数据库信息！"); // 通过配置判断是否安装
+if(!SQL_USER||!SQL_PASS||!SQL_NAME) exit("请先配置config.php中的数据库信息！"); // 通过配置判断是否安装
 
 $conf_db = M("pre_config");
 
