@@ -4,4 +4,4 @@
 配置好config.php内容后，将sql文件导入数据库<br>
 
 ## 如果需要二改，请保留版权信息以及出处
-演示站：https://www.i80k.com/
+演示站：https://www.i80k.com
