@@ -28,7 +28,7 @@ class framework
         
         $moduel = $path[0] ? $path[0] : $config['bind']['moduel']; // 模块
         $controller = $path[1] ? $path[1] : $config['bind']['controller']; // 控制器
-		
+        
         // 循环加入$_GET
         for ($i = 3; $i < count($path); $i ++) {
             if ($i % 2 != 0) {

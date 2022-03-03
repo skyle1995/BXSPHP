@@ -5,9 +5,9 @@ $config = [
         'dbms' => 'mysql', //数据库类型
         'host' => 'localhost', //数据库服务器
         'port' => 3306, //数据库端口
-        'name' => '', //数据库名
-        'user' => '', //数据库用户名
-        'pass' => '', //数据库密码
+        'name' => 'www_i80k_com', //数据库名
+        'user' => 'www_i80k_com', //数据库用户名
+        'pass' => 'THsGeaeZNdCzhdCC', //数据库密码
         "charset" => "utf8", //数据库字节
     ),
     // 应用配置
