@@ -4,7 +4,7 @@
  * @param unknown $str_time 1970-01-01 08:00:00 格式的时间
  * @return unknown|time
 */
-function newStrToTime($str_time = "1970-01-01 08:00:00",$format = 'U'){
+function newStrToTime($str_time="1970-01-01 08:00:00",$format='U'){
     $time=new DateTime($str_time);
     return $time->format($format);
 }
