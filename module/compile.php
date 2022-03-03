@@ -34,37 +34,37 @@ function rc4($data, $pwd) {
 }
 
 /**
- * 转换输出base64参数 加密
+ * 新_base64编码
  * @param $str 为 需要转换的文本
  * @return $str
 */
-function enbase64($str){
+function new_enbase64($str){
     if($str == ""){
         return $str; //如果内容为空直接返回内容
     };
-    $str =    base64_encode($str); //加密内容
+    $str = base64_encode($str); //加密内容
     $str = str_replace('+','-' ,$str); //文本替换
     $str = str_replace('/','_' ,$str); //文本替换
     return $str; //返回结果
 }
 
 /**
- * 转换传入base64参数 解密
+ * 新_base64解码
  * @param $str 为 需要转换的文本
  * @return $str
 */
-function debase64($str){
+function new_debase64($str){
     if($str == ""){
         return $str; //如果内容为空直接返回内容
     };
     $str = str_replace('-','+' ,$str); //文本替换
     $str = str_replace('_','/' ,$str); //文本替换
-    $str =    base64_decode($str); //加密内容
+    $str = base64_decode($str); //加密内容
     return $str; //返回结果
 }
 
 /**
- * 青书加密算法
+ * VIP加密算法
  * @param $str 为 原始文本
  * @param $key 为 密钥数组
  * @param $ofs 为 加密偏移
@@ -84,7 +84,7 @@ function enkay($str,$key,$ofs){
 }
 
 /**
- * 青书解密算法
+ * VIP解密算法
  * @param $str 为 加密文本
  * @param $key 为 密钥数组
  * @param $ofs 为 解密偏移
