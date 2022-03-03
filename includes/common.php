@@ -11,9 +11,6 @@
 
 // [ 应用公共文件 ]
 
-if(defined('IN_CORRECT')) exit("环境变量定义错误，请检查配置是否正常！");
-define('IN_CORRECT', true); // 用于判数据库配置是否正常
-
 // 设置系统编码
 header("Content-type: text/html; charset=UTF-8");
 
@@ -21,8 +18,11 @@ header("Content-type: text/html; charset=UTF-8");
 date_default_timezone_set("PRC");
 // date_default_timezone_set("Asia/Shanghai");
 
-define('SYSTEM_PATH', __DIR__.'/'); // 系统路径
-define('SYSTEM_ROOT', dirname(__DIR__).'/'); // 系统根目录
+if(defined('IN_CORRECT')) exit("系统常量定义失败，请检查配置是否正常！");
+define('IN_CORRECT', true); // 用于判数据库配置是否正常
+
+define('SYSTEM_PATH', dirname(__FILE__).'/'); // 系统路径
+define('SYSTEM_ROOT', dirname(SYSTEM_PATH).'/'); // 系统根目录
 
 define('CC_Defender',1);
 
