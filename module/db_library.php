@@ -11,7 +11,7 @@
 
 // MySQL PDO insert/delete/update/select
 
-if(!defined('IN_CORRECT')) sysmsg("环境变量未设置，请检查配置是否正常！");
+if(!defined('IN_CORRECT')) sysmsg("系统常量未设置，请检查配置是否正常！");
 
 class DB{
     private $server; // 数据库
