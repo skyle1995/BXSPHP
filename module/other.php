@@ -25,13 +25,13 @@ define('SQL_USER', $config['sql_int']['user']);
 define('SQL_PASS', $config['sql_int']['pass']);
 define('SQL_CHARSET', $config['sql_int']['charset']);
 
-if(!SQL_USER||!SQL_PASS||!SQL_NAME) exit("请先配置config.php中的数据库信息！"); // 通过配置判断是否安装
+if(!SQL_USER||!SQL_PASS||!SQL_NAME) sysmsg("请先配置config.php中的数据库信息！","系统提醒"); // 通过配置判断是否安装
 
 $conf_db = M("pre_config");
 
 // 通过数据库判断是否安装
 if (count($conf_db->SQL("show tables like 'pre_config'")) == 0) {
-    exit("请先将sql文件导入到数据库！");
+    sysmsg("请先将sql文件导入到数据库！","系统提醒");
 }else{
     $row=$conf_db->select();$conf=array();
     foreach ($row as $key=>$val) {
