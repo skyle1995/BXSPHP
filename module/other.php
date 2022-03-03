@@ -44,7 +44,10 @@ if (count($conf_db->SQL("show tables like '{$sql_tables}'")) == 0) {
         sysmsg("未找到数据内容，请检查数据表信息！","系统提醒");
     }
 };
-$password_hash = '!@#%!s!0'; // 密码哈希值附加串 默认即可
+
+define('SYSKEY', $conf['syskey']); // 登录信息混淆密钥
+$password_hash = '!@#%!s!0'; // 哈希值附加串 默认即可
+
 $site = ($_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://').$_SERVER['HTTP_HOST']; // 用户访问的地址
 $time = time(); // 当前时间戳
 $date = date("Y-m-d H:i:s",$time); // 当前时间
