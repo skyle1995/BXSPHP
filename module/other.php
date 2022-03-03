@@ -27,15 +27,22 @@ define('SQL_CHARSET', $config['sql_int']['charset']);
 
 if(!SQL_USER||!SQL_PASS||!SQL_NAME) sysmsg("请先配置config.php中的数据库信息！","系统提醒"); // 通过配置判断是否安装
 
-$conf_db = M("pre_config");
+
+$sql_tables = "pre_config";
+
+$conf_db = M($sql_tables);
 
 // 通过数据库判断是否安装
-if (count($conf_db->SQL("show tables like 'pre_config'")) == 0) {
-    sysmsg("请先将sql文件导入到数据库！","系统提醒");
+if (count($conf_db->SQL("show tables like '{$sql_tables}'")) == 0) {
+    sysmsg("未找到数据表，请先将sql文件导入到数据库！","系统提醒");
 }else{
     $row=$conf_db->select();$conf=array();
-    foreach ($row as $key=>$val) {
-        $conf[$val["k"]] = $val["v"];
+    if($row){
+        foreach ($row as $key=>$val) {
+            $conf[$val["k"]] = $val["v"];
+        }
+    }else{
+        sysmsg("未找到数据内容，请检查数据表信息！","系统提醒");
     }
 };
 $password_hash = '!@#%!s!0'; // 密码哈希值附加串 默认即可
