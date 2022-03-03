@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2022-03-03 22:11:47
+-- Generation Time: 2022-03-03 22:19:00
 -- 服务器版本： 5.6.50-log
 -- PHP Version: 5.6.40
 
@@ -27,20 +27,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `pre_config` (
+  `id` int(11) NOT NULL,
   `k` varchar(32) NOT NULL,
   `v` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `pre_config`
 --
 
-INSERT INTO `pre_config` (`k`, `v`) VALUES
-('admin_pwd', '123456'),
-('admin_user', 'bxs'),
-('syskey', 'YKHVGRH1'),
-('v_build', '10000'),
-('v_version', '1.0');
+INSERT INTO `pre_config` (`id`, `k`, `v`) VALUES
+(1, 'v_version', '1.2'),
+(2, 'v_build', '10002'),
+(3, 'admin_user', 'bxs'),
+(4, 'admin_pwd', '123456'),
+(5, 'syskey_pwd', 'YKHVGRH1');
 
 --
 -- Indexes for dumped tables
@@ -50,8 +51,17 @@ INSERT INTO `pre_config` (`k`, `v`) VALUES
 -- Indexes for table `pre_config`
 --
 ALTER TABLE `pre_config`
-  ADD PRIMARY KEY (`k`);
+  ADD PRIMARY KEY (`id`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `pre_config`
+--
+ALTER TABLE `pre_config`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
