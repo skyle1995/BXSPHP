@@ -2,13 +2,13 @@
 $config = [
     // 数据库配置
     "sql_int" => array(
-        'dbms' => 'mysql', // 数据库类型
-        'host' => 'localhost', // 数据库服务器
-        'port' => 3306, // 数据库端口
-        'name' => '', // 数据库名
-        'user' => '', // 数据库用户名
-        'pass' => '', // 数据库密码
-        "charset" => "utf8", // 数据库字节
+        'dbms' => 'mysql', //数据库类型
+        'host' => 'localhost', //数据库服务器
+        'port' => 3306, //数据库端口
+        'name' => '', //数据库名
+        'user' => '', //数据库用户名
+        'pass' => '', //数据库密码
+        "charset" => "utf8", //数据库字节
     ),
     // 应用配置
     "bind" => array(
@@ -33,8 +33,12 @@ $config = [
 
 $error_reporting = false; // 屏蔽所有错误
 
-$nosession = false; // 关闭session 根据开发需求设置 true 开启  false关闭
+//开启防御SQL注入功能，根据开发需求设置 true/false
+$sql_check = true;
 
-$sql_check = true; //开启防御SQL注入功能 true 开启  false关闭
+// 关闭session/防CC跨站攻击(模块) 根据开发需求设置 true/false
+if(!isset($nosession)) $nosession = false;
 
+// 关闭反腾讯网址安全检测(模块) 根据开发需求设置 true/false
+if(!isset($notxprotect)) $notxprotect = false;
 ?>
