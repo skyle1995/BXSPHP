@@ -1,6 +1,6 @@
 <?php
 /*
-name:反腾讯网址安全检测插件
+name:反腾讯网址安全检测模块
 Description:屏蔽腾讯电脑管家网址安全检测
 Version:2.6
 Author:消失的彩虹海
