@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2022-03-01 13:46:34
+-- Generation Time: 2022-03-03 22:11:47
 -- 服务器版本： 5.6.50-log
 -- PHP Version: 5.6.40
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `development`
+-- Database: `www_i80k_com`
 --
 
 -- --------------------------------------------------------
@@ -36,6 +36,8 @@ CREATE TABLE IF NOT EXISTS `pre_config` (
 --
 
 INSERT INTO `pre_config` (`k`, `v`) VALUES
+('admin_pwd', '123456'),
+('admin_user', 'bxs'),
 ('syskey', 'YKHVGRH1'),
 ('v_build', '10000'),
 ('v_version', '1.0');
