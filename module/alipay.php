@@ -130,5 +130,4 @@ function buildRequestForm($para, $signkey, $tourl,$method, $button_name) {
     
     return $sHtml;
 }
-
 ?>
