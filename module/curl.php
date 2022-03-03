@@ -12,47 +12,49 @@
  * @param     $nobaody      启用时将不对HTML中的body部分进行输出。
  * @return    获取到的内容
 */
-function senior_curl($url, $httpheader=0, $post=0, $cookie=0, $referer=0, $ua=0, $header=0, $nobaody=0) {
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL,$url);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-	$httpheader[] = "Accept:*/*";
-	$httpheader[] = "Accept-Encoding:gzip,deflate,sdch";
-	$httpheader[] = "Accept-Language:zh-CN,zh;q=0.8";
-	$httpheader[] = "Connection:close";
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $httpheader);
-	curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-	if($post){
-		curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-	}
-	if($header){
-		curl_setopt($ch, CURLOPT_HEADER, TRUE);
-	}
-	if($cookie){
-		curl_setopt($ch, CURLOPT_COOKIE, $cookie);
-	}
-	if($referer){
-		if($referer==1){
-			curl_setopt($ch, CURLOPT_REFERER, $_SERVER['HTTP_HOST']);
-		}else{
-			curl_setopt($ch, CURLOPT_REFERER, $referer);
-		}
-	}
-	if($ua){
-		curl_setopt($ch, CURLOPT_USERAGENT,$ua);
-	}else{
-		curl_setopt($ch, CURLOPT_USERAGENT,'Mozilla/5.0 (Linux; Android 4.4.2; NoxW Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36');
-	}
-	if($nobaody){
-		curl_setopt($ch, CURLOPT_NOBODY,1);
-	}
-	curl_setopt($ch, CURLOPT_ENCODING, "gzip");
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-	$ret = curl_exec($ch);
-	curl_close($ch);
-	return $ret;
+function senior_curl($url, $post=0, $httpheader=0, $cookie=0, $referer=0, $ua=0, $header=0, $nobaody=0) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL,$url);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    if(!$httpheader or $httpheader == 0){
+        $httpheader[] = "Accept:*/*";
+        $httpheader[] = "Accept-Encoding:gzip,deflate,sdch";
+        $httpheader[] = "Accept-Language:zh-CN,zh;q=0.8";
+        $httpheader[] = "Connection:close"; 
+    }
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $httpheader);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    if($post){
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+    }
+    if($header){
+        curl_setopt($ch, CURLOPT_HEADER, TRUE);
+    }
+    if($cookie){
+        curl_setopt($ch, CURLOPT_COOKIE, $cookie);
+    }
+    if($referer){
+        if($referer==1){
+            curl_setopt($ch, CURLOPT_REFERER, $_SERVER['HTTP_HOST']);
+        }else{
+            curl_setopt($ch, CURLOPT_REFERER, $referer);
+        }
+    }
+    if($ua){
+        curl_setopt($ch, CURLOPT_USERAGENT,$ua);
+    }else{
+        curl_setopt($ch, CURLOPT_USERAGENT,'Mozilla/5.0 (Linux; Android 4.4.2; NoxW Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36');
+    }
+    if($nobaody){
+        curl_setopt($ch, CURLOPT_NOBODY,1);
+    }
+    curl_setopt($ch, CURLOPT_ENCODING, "gzip");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+    $ret = curl_exec($ch);
+    curl_close($ch);
+    return $ret;
 }
 
 
