@@ -27,7 +27,6 @@ define('SQL_CHARSET', $config['sql_int']['charset']);
 
 if(!SQL_USER||!SQL_PASS||!SQL_NAME) sysmsg("请先配置config.php中的数据库信息！","系统提醒"); // 通过配置判断是否安装
 
-
 $sql_tables = "pre_config";
 
 $conf_db = M($sql_tables);
