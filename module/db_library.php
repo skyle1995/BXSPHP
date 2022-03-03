@@ -11,7 +11,7 @@
 
 // MySQL PDO insert/delete/update/select
 
-if(!defined('IN_CORRECT'))exit();
+if(!defined('IN_CORRECT')) exit("环境变量未设置，请检查配置是否正常！");
 
 class DB{
     private $server; // 数据库
