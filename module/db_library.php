@@ -11,7 +11,7 @@
 
 // MySQL PDO insert/delete/update/select
 
-if(!defined('IN_CORRECT')) exit("环境变量未设置，请检查配置是否正常！");
+if(!defined('IN_CORRECT')) sysmsg("环境变量未设置，请检查配置是否正常！");
 
 class DB{
     private $server; // 数据库
@@ -25,12 +25,12 @@ class DB{
     try {
         $this->server = new PDO (SQL_DBMS.":host=".SQL_HOST.";dbname=".SQL_NAME.";charset=".SQL_CHARSET.";port=".SQL_PORT,SQL_USER,SQL_PASS);
     } catch (Exception $e) {
-        exit('链接数据库失败:' . $e->getMessage());
+        sysmsg('链接数据库失败:' . $e->getMessage());
     }
     $this->server->query ( "set names " . SQL_CHARSET );
     $this->table = $table;
     if (empty ( $table ))
-        exit ( '初始化数据库表失败!' );
+        sysmsg( '初始化数据库表失败!' );
     }
     
     /**
@@ -173,7 +173,7 @@ class DB{
     /**
      * 修改记录
      * @param unknown $table 该参数为数据库的表名
-     * @param unknown $array 例子: array("username"=>'LingDian',"password"=>'123456');
+     * @param unknown $array 例子: array("username"=>'bxs',"password"=>'123456');
      * @return string
     **/
     public function update2($field1,$field2,$array) {
