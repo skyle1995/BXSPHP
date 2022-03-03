@@ -9,7 +9,7 @@ function M($table) {
 }
 
 /**
- * 自动翻页 
+ * 自动翻页
  * @param unknown $alg 总页数
  * @param unknown $page 当前页数
  * @param unknown $num 显示页数
