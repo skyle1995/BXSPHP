@@ -38,7 +38,7 @@ $sql_check = true;
 
 // 关闭session/防CC跨站攻击(模块) 根据开发需求设置 true/false
 if(!isset($nosession)) $nosession = false;
- 
+
 // 关闭反腾讯网址安全检测(模块) 根据开发需求设置 true/false
 if(!isset($notxprotect)) $notxprotect = false;
 ?>
