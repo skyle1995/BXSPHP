@@ -29,7 +29,7 @@ class framework
         $moduel = $path[0] ? $path[0] : $config['bind']['moduel']; // 模块
         $controller = $path[1] ? $path[1] : $config['bind']['controller']; // 控制器
 		
-		// 循环加入$_GET
+        // 循环加入$_GET
         for ($i = 3; $i < count($path); $i ++) {
             if ($i % 2 != 0) {
                 @$_GET["$path[$i]"] = $path[$i + 1];
@@ -38,7 +38,7 @@ class framework
         
         // 判断应用是否存在
         if(!file_exists(APP_PATH."/{$moduel}/{$controller}.php")) {
-			sysmsg("访问路径错误，请检查路径是否正确！","系统提醒");
+            sysmsg("访问路径错误，请检查路径是否正确！","系统提醒");
         }
         
         // 设置模板文件路径
