@@ -1,6 +1,6 @@
 <?php
 /*
-name:防CC跨站攻击插件
+name:防CC跨站攻击模块
 Description:防止CC跨站攻击专用
 Version:1.0
 Author:青书_log
