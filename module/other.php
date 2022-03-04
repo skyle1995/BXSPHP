@@ -36,7 +36,7 @@ if (count($conf_db->SQL("show tables like '{$sql_tables}'")) == 0) {
     sysmsg("未找到数据表，请先将sql文件导入到数据库！","系统提醒");
 }else{
     $row=$conf_db->select();$conf=array();
-    if($row){
+    if(is_array($row)){
         foreach ($row as $key=>$val) {
             $conf[$val["k"]] = $val["v"];
         }

@@ -64,16 +64,22 @@ function senior_curl($url, $post=0, $httpheader=0, $cookie=0, $referer=0, $ua=0,
  * @return          获取到的内容
 */
 function curl_get($url){  
-   $curl = $url;  
-   $ch = curl_init();    
-   curl_setopt($ch, CURLOPT_URL, $curl);    
+    $curl = $url;  
+    $ch = curl_init();    
+    curl_setopt($ch, CURLOPT_URL, $curl);    
     //参数为1表示传输数据，为0表示直接输出显示。  
-   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
     //参数为0表示不带头文件，为1表示带头文件  
-   curl_setopt($ch, CURLOPT_HEADER,0);  
-   $output = curl_exec($ch);   
-   curl_close($ch);   
-   return $output;  
+    curl_setopt($ch, CURLOPT_HEADER,0);  
+    
+    // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);//绕过ssl验证
+    // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, '0');
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, '0');
+    
+    $output = curl_exec($ch);   
+    curl_close($ch);   
+    return $output;  
 }
 
 /**

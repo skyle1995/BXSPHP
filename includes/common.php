@@ -12,10 +12,10 @@
 // [ 应用公共文件 ]
 
 // 设置系统编码
-header("Content-type: text/html; charset=UTF-8");
+// header("Content-type: text/html; charset=UTF-8");
 
 // 设置应用时区
-date_default_timezone_set("PRC");
+// date_default_timezone_set("PRC");
 // date_default_timezone_set("Asia/Shanghai");
 
 if(defined('IN_CORRECT')) exit("系统常量定义失败，请检查配置是否正常！");

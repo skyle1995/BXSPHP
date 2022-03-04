@@ -205,16 +205,18 @@ function str_spell($arrays,$connect){
 */
 function delByValue($arr, $value){
     if(!is_array($arr)){
-    return $arr;
+        return $arr;
     }
     if(!is_array($value)){
-    return $arr;
+        return $arr;
     }
-    for($i=0;$i<count($arr);$i++){
-        for ($x=0;$x<count($value);$x++){
-            if($arr[$i] == $value[$x]){
-                unset($arr[$i]);
+    $tmp = array();
+    for($i=0;$i<count($value);$i++){
+        foreach ($arr as $key=>$val) {
+            if($key!=$value[$i]){
+                $tmp[$key] = $val;
             }
+            $arr = $tmp;
         }
     }
     return $arr;

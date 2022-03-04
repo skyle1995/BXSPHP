@@ -6,9 +6,11 @@
  */
 function paraFilter($para) {
     $para_filter = array();
-    foreach ($para as $key=>$val) {
-        if($key == "sign" || $key == "sign_type" || $val == "")continue;
-        else $para_filter[$key] = $para[$key];
+    if(is_array($para)){
+        foreach ($para as $key=>$val) {
+            if($key == "sign" || $key == "sign_type" || $val == "")continue;
+            else $para_filter[$key] = $para[$key];
+        }
     }
     return $para_filter;
 }
@@ -77,7 +79,9 @@ function md5Sign($prestr, $signkey) {
 function md5Verify($prestr, $sign, $signkey) {
     $prestr = $prestr . $signkey;
     $mysgin = md5($prestr);
-
+    
+    // exit($mysgin."   2".$sign);
+    
     if($mysgin == $sign) {
         return true;
     }
@@ -121,7 +125,7 @@ function buildRequestForm($para, $signkey, $tourl,$method, $button_name) {
     $sHtml .= "<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />";
     $sHtml .= "<title>$button_name</title></head><body>";
     $sHtml .= "<form id='alipaysubmit' name='alipaysubmit' action='".$tourl."' method='".$method."'>";
-    while (list ($key, $val) = each ($paras)) {
+    foreach ($paras as $key=>$val) {
         $sHtml .= "<input type='hidden' name='".$key."' value='".$val."'/>";
     }
     //submit按钮控件请不要含有name属性
