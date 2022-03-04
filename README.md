@@ -17,8 +17,9 @@
 
 #### 使用说明
 
-1.  演示站：[https://www.i80k.com](https://www.i80k.com)
-2.  如果需要二改发布，请保留版权信息以及出处
+1.  官方网站：[https://www.i80k.com](https://www.i80k.com)
+2.  项目实例：[https://ment.i80k.com/](https://ment.i80k.com/)
+3.  如果需要二改发布，请保留版权信息以及出处
 
 #### 参与贡献
 
