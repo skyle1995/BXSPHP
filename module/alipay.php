@@ -27,6 +27,27 @@ function argSort($para) {
 }
 
 /**
+ * 转换字符串参数为数组
+ * @param $str 为 参数内容
+ * @return $array str
+*/
+function stringLinkarr($str){
+    if(empty($str)){
+        return $str;
+    }
+    $a = explode("&",$str);
+    foreach($a as $v) {
+        if(!empty($v)){
+            $b = explode("=", $v);
+            if(count($b)>1){
+                $arr[$b[0]] = $b[1];    
+            }
+        }
+    }
+    return $arr;
+}
+
+/**
  * 把数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串
  * @param $para 需要拼接的数组
  * return 拼接完成以后的字符串
