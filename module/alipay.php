@@ -31,7 +31,7 @@ function argSort($para) {
  * @param $str 为 参数内容
  * @return $array str
 */
-function stringLinkarr($str){
+function stringLinkpara($str){
     if(empty($str)){
         return $str;
     }
