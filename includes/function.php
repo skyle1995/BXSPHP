@@ -159,45 +159,6 @@ function json_str($arrays){
 }
 
 /**
- * 转换数组参数
- * @param $str 为 参数内容
- * @return $array str
-*/
-function parameter_arr($str){
-    if(empty($str)){
-        return $str;
-    }
-    $a = explode("&",$str);
-    foreach($a as $v) {
-        if(!empty($v)){
-            $b = explode("=", $v);
-            if(count($b)>1){
-                $arr[$b[0]] = $b[1];    
-            }
-        }
-    }
-    return $arr;
-}
-
-/**
- * 数组转拼接文本
- * @param $arrays 转换数组内容
- * @return 转换后的文本内容
-*/
-function str_spell($arrays,$connect){
-    if(!is_array($arrays)){
-        return $arrays;
-    }
-    foreach ($arrays as $key=>$val){
-        $str .= $val.$connect;
-    }
-    if(count($str)>0){
-        $str = substr($str, 0, -(count($connect) + 1));
-    }
-    return $str;
-}
-
-/**
  * 删除数组成员
  * @param $arr 为 原数组内容
  * @param $value 为 需要删除的对象(数组)
@@ -216,8 +177,8 @@ function delByValue($arr, $value){
             if($key!=$value[$i]){
                 $tmp[$key] = $val;
             }
-            $arr = $tmp;
         }
+        $arr = $tmp;
     }
     return $arr;
 }
