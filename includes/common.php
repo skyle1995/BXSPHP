@@ -35,11 +35,14 @@ if (isset($system_close)) sysmsg($system_close,"系统提醒"); //停止运行
 
 if(!$nosession) session_start(); //创建session对话
 
-// 开始加载插件文件
+// 加载模块文件
 foreach ($config['module'] as $key=>$val) {
     $plugin = SYSTEM_ROOT."module/{$key}.php";
     if(file_exists($plugin)){
         include_once($plugin);
     }
 }
+
+// 加载其他内容
+include_once(SYSTEM_ROOT.'other.php');
 ?>

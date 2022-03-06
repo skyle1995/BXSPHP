@@ -1,6 +1,15 @@
 <?php
 // 这个文件必须在db库之后加载，否则报错
 
+/**
+ * 自动实例化数据库
+ * @param unknown $table
+ * @return mysql_server
+*/
+function M($table) {
+    return $Model = new DB($table);
+}
+
 //过滤提交数据
 if (!get_magic_quotes_gpc() && $sql_check==true)
 {
@@ -48,7 +57,7 @@ if (count($conf_db->SQL("show tables like '{$sql_tables}'")) == 0) {
 define('SYSKEY', $conf['syskey']); // 登录信息混淆密钥
 $password_hash = '!@#%!s!0'; // 哈希值附加串 默认即可
 
-$site = ($_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://').$_SERVER['HTTP_HOST']; // 用户访问的地址
+$host = ($_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://').$_SERVER['HTTP_HOST']; // 用户访问的地址
 $time = time(); // 当前时间戳
 $date = date("Y-m-d H:i:s",$time); // 当前时间
 $real_ip = real_ip(); // 用户ip地址

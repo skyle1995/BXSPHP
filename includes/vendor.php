@@ -29,12 +29,8 @@ class framework
         $moduel = $path[0] ? $path[0] : $config['bind']['moduel']; // 模块
         $controller = $path[1] ? $path[1] : $config['bind']['controller']; // 控制器
         
-        // 循环加入$_GET
-        for ($i = 3; $i < count($path); $i ++) {
-            if ($i % 2 != 0) {
-                @$_GET["$path[$i]"] = $path[$i + 1];
-            }
-        }
+        // 过滤掉多余的参数
+        $_GET = delByValue($_GET,array('s'));
         
         // 判断应用是否存在
         if(!file_exists(APP_PATH."/{$moduel}/{$controller}.php")) {
