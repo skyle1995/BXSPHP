@@ -111,7 +111,6 @@ function dekay($str,$key,$ofs){
     }
 }
 
-
 /**
  * 自动处理登录信息
  * @param $string 加密内容
