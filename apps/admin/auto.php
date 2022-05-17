@@ -1,13 +1,14 @@
 <?php
 // 判断登录信息
 if(isset($_COOKIE["admin_token"])){
-    $session=md5($conf['admin_user'].$conf['admin_pwd'].$password_hash);
-    $admin_token=authcode(daddslashes($_COOKIE['admin_token']), 'DECODE', SYSKEY);
-    list($user, $sid, $expiretime) = explode("\t", $admin_token);
-    if($user == $conf['admin_user'] && $session==$sid && $expiretime>time()) {
-        $expiretime=time() + 604800;
-        $token=authcode("{$user}\t{$session}\t{$expiretime}", 'ENCODE', SYSKEY);
-        setcookie("admin_token", $token, time() + 604800);
+    $admin_token = (string)authcode(daddslashes($_COOKIE['admin_token']), 'DECODE', LOGINS_HASH);
+    list($admin_user, $sid, $expiretime) = explode("\t", $admin_token);
+    
+    $session=md5($conf['admin_user'].$conf['admin_pwd'].ENCRYPT_KEY);
+    if($admin_user == $conf['admin_user'] && $session==$sid && $expiretime>$time) {
+        $expiretime=$time + $system["excookie"];
+        $admintoken=authcode("{$admin_user}\t{$session}\t{$expiretime}", 'ENCODE', LOGINS_HASH);
+        setcookie("admin_token", $admintoken, $expiretime,"/".$moduel);
         $islogin=1;
     }
 }
