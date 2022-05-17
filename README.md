@@ -1,5 +1,12 @@
 ## BXSPHP 1.2
 
+[![Build Status](https://travis-ci.org/skyle1995/BXSPHP.svg?branch=master)](https://travis-ci.org/skyle1995/BXSPHP)
+[![Latest Stable Version](https://poser.pugx.org/skyle1995/BXSPHP/v/stable)](https://packagist.org/packages/skyle1995/BXSPHP)
+[![Total Downloads](https://poser.pugx.org/skyle1995/BXSPHP/downloads)](https://packagist.org/packages/skyle1995/BXSPHP)
+[![Latest Unstable Version](https://poser.pugx.org/skyle1995/BXSPHP/v/unstable)](https://packagist.org/packages/skyle1995/BXSPHP)
+[![License](https://poser.pugx.org/skyle1995/BXSPHP/license)](https://packagist.org/packages/skyle1995/BXSPHP)
+
+
 #### 项目介绍
 1.  百晓生PHP简易框架，简易，高效，便捷
 2.  内置了一些常用的模块，更方便，更适合小型程序快速开发
