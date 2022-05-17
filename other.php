@@ -1,17 +1,6 @@
 <?php
-// 这个文件必须在db库之后加载，否则报错
-
-/**
- * 自动实例化数据库
- * @param unknown $table
- * @return mysql_server
-*/
-function M($table) {
-    return $Model = new DB($table);
-}
-
 //过滤提交数据
-if (!get_magic_quotes_gpc() && $sql_check==true)
+if (!get_magic_quotes_gpc() && $$system["sql_check"] == true)
 {
     if (!empty($_GET))
     {
@@ -36,15 +25,16 @@ define('SQL_CHARSET', $config['sql_int']['charset']);
 
 if(!SQL_USER||!SQL_PASS||!SQL_NAME) sysmsg("请先配置config.php中的数据库信息！","系统提醒"); // 通过配置判断是否安装
 
-$sql_tables = "pre_config";
-
+$sql_tables = "pre_config"; // 站点配置数据表
 $conf_db = M($sql_tables);
 
+$conf = array();
+
 // 通过数据库判断是否安装
-if (count($conf_db->SQL("show tables like '{$sql_tables}'")) == 0) {
-    sysmsg("未找到数据表，请先将sql文件导入到数据库！","系统提醒");
+if (count($conf_db->SQL("show tables like '{$sql_tables}'")[1]) == 0) {
+    sysmsg("未找到数据表，请先将install.sql文件导入到数据库！","系统提醒");
 }else{
-    $row=$conf_db->select();$conf=array();
+    $row=$conf_db->select();
     if(is_array($row)){
         foreach ($row as $key=>$val) {
             $conf[$val["k"]] = $val["v"];
@@ -54,10 +44,14 @@ if (count($conf_db->SQL("show tables like '{$sql_tables}'")) == 0) {
     }
 };
 
-define('SYSKEY', $conf['syskey']); // 登录信息混淆密钥
-$password_hash = '!@#%!s!0'; // 哈希值附加串 默认即可
+define('LOGINS_HASH', "jI1@cD");  // 混淆密钥
+define('ENCRYPT_KEY', 'aA2_bH');  // 混淆密钥
 
 $host = ($_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://').$_SERVER['HTTP_HOST']; // 用户访问的地址
+
+list($t1, $t2) = explode(' ', microtime());
+$time_long = sprintf('%u', (floatval($t1) + floatval($t2)) * 1000);
+
 $time = time(); // 当前时间戳
 $date = date("Y-m-d H:i:s",$time); // 当前时间
 $real_ip = real_ip(); // 用户ip地址

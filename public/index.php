@@ -11,13 +11,10 @@
 
 // [ 应用入口文件 ]
 
-// 设置应用目录
-define('APP_PATH',dirname(__DIR__).'/apps');
-
-// 加载公共文件
+// 加载路由文件
 include_once(__DIR__.'/../includes/vendor.php');
 
-// 执行HTTP应用并响应
+// 执行路由信息
 bxs\framework::http();
 
 // 亲^_^ 后面不需要任何代码了 就是如此简单

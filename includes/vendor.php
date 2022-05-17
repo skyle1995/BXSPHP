@@ -26,22 +26,29 @@ class framework
             $path = explode('/', ltrim($_GET["s"], "/"));
         }
         
-        $moduel = $path[0] ? $path[0] : $config['bind']['moduel']; // 模块
-        $controller = $path[1] ? $path[1] : $config['bind']['controller']; // 控制器
+        $moduel = $path[0] ? $path[0] : $config['bind']['moduel']; // 应用
+        $view = $path[1] ? $path[1] : $config['bind']['view']; // 页面
         
-        // 过滤掉多余的参数
+        $erent = []; // 转移更多传入的参数
+        foreach ($path as $key => $value) {
+            if($key > 1){
+                $erent[] = $value;
+            }
+        }
+
+        // 过滤掉API信息
         $_GET = delByValue($_GET,array('s'));
         
         // 判断应用是否存在
-        if(!file_exists(APP_PATH."/{$moduel}/{$controller}.php")) {
+        if(!file_exists(APP_PATH."/{$moduel}/{$view}.php")) {
             sysmsg("访问路径错误，请检查路径是否正确！","系统提醒");
         }
         
-        // 设置模板文件路径
+        // 设置应用文件路径
         define('__TEMP__', APP_PATH."/{$moduel}/");
         
         // 开始加载应用程序
-        include_once(APP_PATH."/{$moduel}/{$controller}.php");
+        include_once(APP_PATH."/{$moduel}/{$view}.php");
     }
 };
 ?>

@@ -1,10 +1,24 @@
 <?php
+// +----------------------------------------------------------------------
+// | LingDian [ WE CAN DO IT JUST LINGDIAN ]
+// +----------------------------------------------------------------------
+// | Copyright (c) http://i80k.com All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 百晓生(BXS) <skygoole88@gmail.com>
+// +----------------------------------------------------------------------
+
+// dispose Y2K38
+
+/*********************************************************/
+
 /**
  * 转换到时间秒数
  * @param unknown $str_time 1970-01-01 08:00:00 格式的时间
  * @return unknown|time
 */
-function newStrToTime($str_time="1970-01-01 08:00:00",$format='U'){
+function newTime($str_time="1970-01-01 08:00:00",$format='U'){
     $time=new DateTime($str_time);
     return $time->format($format);
 }

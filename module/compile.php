@@ -1,4 +1,16 @@
 <?php
+// +----------------------------------------------------------------------
+// | LingDian [ WE CAN DO IT JUST LINGDIAN ]
+// +----------------------------------------------------------------------
+// | Copyright (c) http://i80k.com All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 百晓生(BXS) <skygoole88@gmail.com>
+// +----------------------------------------------------------------------
+
+// 字符串加密解密模块
+
 /**
  * RC4加解密数据 如需解密，再次调用此函数即可
  * @param $data 为 加密内容
@@ -59,20 +71,20 @@ function new_debase64($str){
     };
     $str = str_replace('-','+' ,$str); //文本替换
     $str = str_replace('_','/' ,$str); //文本替换
-    $str = base64_decode($str); //加密内容
+    $str = base64_decode($str); //解码内容
     return $str; //返回结果
 }
 
 /**
  * VIP加密算法
- * @param $str 为 原始文本
- * @param $key 为 密钥数组
- * @param $ofs 为 加密偏移
- * @return str 加密后的结果
+ * @param $str      原始文本
+ * @param $key      密钥数组
+ * @param $ofs      加密偏移
+ * @return $str     加密后的结果
 */
 function enkay($str,$key,$ofs){
     for ($i=0; $i<strlen($str); $i++) {
-        $val = ord($str{$i});
+        $val = ord($str[$i]);
         $val = ($val + $ofs) ^ $key[$i % count($key)];
         if($val < 0){
             $val = abs($val);
@@ -85,25 +97,27 @@ function enkay($str,$key,$ofs){
 
 /**
  * VIP解密算法
- * @param $str 为 加密文本
- * @param $key 为 密钥数组
- * @param $ofs 为 解密偏移
- * @return str 解密后的结果
+ * @param $str      加密文本
+ * @param $key      密钥数组
+ * @param $ofs      解密偏移
+ * @return $str     解密后的结果
 */
 function dekay($str,$key,$ofs){
     $row = explode(",",base64_decode($str)); // base64解码并分割字符串
+
     if(is_array($row)){
         foreach ($row as $i=>$v){
-            if(substr ($v, 0,1) == "-"){
-                $v = substr( $v, -(strlen($v)-1));
-                $v = hexdec($v);
-                $v *= -1;
-            }else{
-                $v = hexdec($v);
+            if($v != "" or $v != null){
+                if(substr ($v, 0,1) == "-"){
+                    $v = substr( $v, -(strlen($v)-1));
+                    $v = hexdec($v);
+                    $v *= -1;
+                }else{
+                    $v = hexdec($v);
+                }
+                $v = ($v ^ $key[$i % sizeof($key)]) - $ofs;
+                $decode .= chr($v); 
             }
-            $v = ($v ^ $key[$i % sizeof($key)]) - $ofs;
-            $hex .= $v.",";
-            $decode .= chr($v);
         }
         return $decode; // 返回 解码后的原字符
     }else{

@@ -1,13 +1,18 @@
 <?php
-/*
-name:防CC跨站攻击模块
-Description:防止CC跨站攻击专用
-Version:1.0
-Author:青书_log
-*/
+// +----------------------------------------------------------------------
+// | LingDian [ WE CAN DO IT JUST LINGDIAN ]
+// +----------------------------------------------------------------------
+// | Copyright (c) http://i80k.com All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: 百晓生(BXS) <skygoole88@gmail.com>
+// +----------------------------------------------------------------------
+
+// 防CC跨站攻击模块
 
 function getspider($useragent=''){
-	if(CC_Defender==2)exit;
+	if(CC_Defender) exit;
 	if(!$useragent){$useragent = $_SERVER['HTTP_USER_AGENT'];}
 	$useragent=strtolower($useragent);
 	if (strpos($useragent, 'baiduspider') !== false){return 'baiduspider';}
@@ -62,12 +67,12 @@ if(!$nosession and !$_SESSION['cron_session']){
 	if(!getspider()){
 		$cron_session=md5(uniqid().rand(1,1000));
 		$_SESSION['cron_session']=$cron_session;
-		setcookie("cron_session", $cron_session);
+		setcookie("cron_session", $cron_session,0,"/");
 	}
 }else{
     if(!$nosession and $_SESSION['cron_session'] != $_COOKIE['cron_session']){
         $_SESSION['cron_session'] = "";
-        setcookie("cron_session", "",0);
+        setcookie("cron_session", "",0,"/");
     	exit('浏览器可能不支持COOKIE或者不正常访问，请刷新重试！');
     }
 }
