@@ -28,6 +28,6 @@
 #### 版权信息
 
 1.  BXSPHP遵循Apache2开源协议发布，并提供免费使用。 
-3.  Copyright © i80k.com All Rights Reserved.BXSPHP(百晓生)
+3.  Copyright © BXSPHP(百晓生) All Rights Reserved.
 4.  BXSPHP® 商标和著作权所有者为百晓生个人所有。
 5.  更多细节参阅 [LICENSE](LICENSE)
