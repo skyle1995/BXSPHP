@@ -1,7 +1,0 @@
-本程序静态规则和ThinkPHP一样，或者复制粘贴以下静态规则到Nginx站点伪静态配置：
-
-location / {
-    if (!-e $request_filename){
-        rewrite  ^(.*)$  /index.php?s=$1  last; break;
-    }
-}
