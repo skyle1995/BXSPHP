@@ -28,7 +28,12 @@ class framework
         
         $moduel = $path[0] ? $path[0] : $config['bind']['moduel']; // 应用
         $view = $path[1] ? $path[1] : $config['bind']['view']; // 页面
-        
+
+        // 启用将无法访问目录同名的PHP文件，重新定向（异步前端模板）
+        if($view == $moduel) {
+            if(!empty($path[2])) $view = $path[2];
+        };
+
         $erent = []; // 转移更多传入的参数
         foreach ($path as $key => $value) {
             if($key > 1){

@@ -33,6 +33,7 @@
  * @return unknown|multitype:
 */
 function addslashes_deep($value,$htmlspecialchars = false) {
+    $value = (string)$value;
     if (empty($value)) {
         return $value;
     } else {
@@ -66,26 +67,6 @@ function addslashes_deep($value,$htmlspecialchars = false) {
 }
 
 /**
- * SQL注入过滤字符串 
- * 递归方式的对变量中的特殊字符进行转义
- * @param unknown $value
- * @return unknown|multitype:
-*/
-function daddslashes($string, $force = 0, $strip = FALSE) {
-    !defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
-    if(!MAGIC_QUOTES_GPC || $force) {
-        if(is_array($string)) {
-            foreach($string as $key => $val) {
-                $string[$key] = daddslashes($val, $force, $strip);
-            }
-        } else {
-            $string = addslashes($strip ? stripslashes($string) : $string);
-        }
-    }
-    return $string;
-}
-
-/**
  * 获取访问用户真实IP地址 
  * @return 访问用户IP地址
 */
@@ -106,6 +87,14 @@ function real_ip(){
         $ip = $_SERVER['HTTP_X_REAL_IP'];
     }
     return $ip;
+}
+
+/**
+ * 延迟时间
+ * @param $times 延迟时间 毫秒
+ */
+function msleep($times){
+    usleep($times*1000);
 }
 
 /**
@@ -220,6 +209,7 @@ function delByValue($arr, $value){
  * @return value            0没有/1全部/2包含
  */
 function checkChinese($string){
+    $string = (string)$string;
     if (preg_match("/^[\x7f-\xff]+$/",$string)){
         return 1;
     }
@@ -306,60 +296,6 @@ function GoDomain($url,$time=0,$msg='正在跳转..'){
 }
 
 /**
- * 自动翻页
- * @param unknown $alg 总页数
- * @param unknown $page 当前页数
- * @param unknown $num 显示页数
- * @param unknown $module 附加参数
- */
-function pagebar($alg, $page, $num, $module) {
-    $first=1; //起始页
-    $prev=$page-1; //上一页
-    $next=$page+1; //下一页
-    $last=$alg; //最后一页
-    
-    $num = min($alg, $num); // 处理显示的页码数大于总页数的情况
-    if ($page > $alg || $page < 1){
-        return; // 处理非法页号的情况
-    }
-    
-    $end = $page + floor($num / 2) <= $alg ? $page + floor($num / 2) : $alg; // 计算结束页号
-    $start = $end - $num + 1; // 计算开始页号
-    
-    if ($start < 1) { // 处理开始页号小于1的情况
-        $end -= $start - 1;
-        $start = 1;
-    }
-    
-    if ($page>1)
-    {
-        echo '<li><a href="?page='.$first.$module.'">首页</a></li>';
-        echo '<li><a href="?page='.$prev.$module.'">&laquo;</a></li>';
-    } else {
-        echo '<li class="disabled"><a>首页</a></li>';
-        echo '<li class="disabled"><a>&laquo;</a></li>';
-    }
-    
-    for ($i = $start; $i <= $end; $i ++) { // 输出分页条，请自行添加链接样式
-        if ($i == $page){
-            // echo '<li><a href="?page='.$i.$module.'">'.$i.'</a></li>';
-            echo '<li class="disabled"><a>'.$i.'</a></li>';
-        }else{
-            echo '<li><a href="?page='.$i.$module.'">'.$i.'</a></li>';
-            // echo '<li class="disabled"><a>'.$i.'</a></li>';
-        }
-    }
-    
-    if ($page<$alg) {
-        echo '<li><a href="?page='.$next.$module.'">&raquo;</a></li>';
-        echo '<li><a href="?page='.$last.$module.'">尾页</a></li>';
-    } else {
-        echo '<li class="disabled"><a>&raquo;</a></li>';
-        echo '<li class="disabled"><a>尾页</a></li>';
-    }
-}
-
-/**
  * 404信息提示界面
  * @param $msg      显示内容
  * @param $title    页面标题
@@ -400,7 +336,7 @@ function sysmsg($msg = '很抱歉，你访问的页面找不到了',$title = '�
         	position:relative;
         	z-index:1;
         	background-color:#d2e1ec;
-        	background-image:linear-gradient(tobottom,#bbcfe10%,#e8f2f680%);
+        	background-image:linear-gradient(to bottom,#bbcfe0 10%,#e8f2f6 80%);
         	overflow:hidden;
         }
         
@@ -498,7 +434,7 @@ function sysmsg($msg = '很抱歉，你访问的页面找不到了',$title = '�
         	z-index:1;
         	border-radius:100%;
         	background-color:#e8f2f6;
-        	background-image:linear-gradient(tobottom,#dee8f1,#f6f9fa60px);
+        	background-image:linear-gradient(to bottom,#dee8f1,#f6f9fa,60px);
         }
         
         /*脚印*/
@@ -583,10 +519,6 @@ function sysmsg($msg = '很抱歉，你访问的页面找不到了',$title = '�
 <!-- 网页结束 -->
 <script>
     document.title = '<?php echo $title; ?>';
-    // var obj = document.getElementById('layuimini-content-page');
-    // if(obj){
-    //     obj.style.cssText = "height: calc(100% + 44px);";
-    // }
 </script>
 <script>
     (function () {
@@ -697,7 +629,24 @@ function newsmsg($msg = '未知异常，请联系网站管理员处理！',$titl
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style type="text/css">
-        html{background:#eee}body{background:#fff;color:#333;font-family:"微软雅黑","Microsoft YaHei",sans-serif;margin:2em auto;padding:1em 2em;max-width:700px;-webkit-box-shadow:10px 10px 10px rgba(0,0,0,.13);box-shadow:10px 10px 10px rgba(0,0,0,.13);opacity:.8}h1{border-bottom:1px solid #dadada;clear:both;color:#666;font:24px "微软雅黑","Microsoft YaHei",,sans-serif;margin:30px 0 0 0;padding:0;padding-bottom:7px}#error-page{margin-top:50px}h1{text-align:center}h3{text-align:center}#error-page p{font-size:9px;line-height:1.5;margin:25px 0 20px}#error-page code{font-family:Consolas,Monaco,monospace}ul li{margin-bottom:10px;font-size:9px}a{color:#21759B;text-decoration:none;margin-top:-10px}a:hover{color:#D54E21}.button{background:#f7f7f7;border:1px solid #ccc;color:#555;display:inline-block;text-decoration:none;font-size:9px;line-height:26px;height:28px;margin:0;padding:0 10px 1px;cursor:pointer;-webkit-border-radius:3px;-webkit-appearance:none;border-radius:3px;white-space:nowrap;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-box-shadow:inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);box-shadow:inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);vertical-align:top}.button.button-large{height:29px;line-height:28px;padding:0 12px}.button:focus,.button:hover{background:#fafafa;border-color:#999;color:#222}.button:focus{-webkit-box-shadow:1px 1px 1px rgba(0,0,0,.2);box-shadow:1px 1px 1px rgba(0,0,0,.2)}.button:active{background:#eee;border-color:#999;color:#333;-webkit-box-shadow:inset 0 2px 5px -3px rgba(0,0,0,.5);box-shadow:inset 0 2px 5px -3px rgba(0,0,0,.5)}table{table-layout:auto;border:1px solid #333;empty-cells:show;border-collapse:collapse}th{padding:4px;border:1px solid #333;overflow:hidden;color:#333;background:#eee}td{padding:4px;border:1px solid #333;overflow:hidden;color:#333}
+        html{background:#eee}
+        body{background:#fff;color:#333;font-family:"微软雅黑","Microsoft YaHei",sans-serif;margin:2em auto;padding:1em 2em;max-width:700px;-webkit-box-shadow:10px 10px 10px rgba(0,0,0,.13);box-shadow:10px 10px 10px rgba(0,0,0,.13);opacity:.8}
+        h1{border-bottom:1px solid #dadada;clear:both;color:#666;font:24px "微软雅黑","Microsoft YaHei",sans-serif;margin:30px 0 0 0;padding:0;padding-bottom:7px}
+        #error-page{margin-top:50px}
+        h1{text-align:center}
+        h3{text-align:center}
+        #error-page p{font-size:9px;line-height:1.5;margin:25px 0 20px}
+        #error-page code{font-family:Consolas,Monaco,monospace}
+        ul li{margin-bottom:10px;font-size:9px}a{color:#21759B;text-decoration:none;margin-top:-10px}
+        a:hover{color:#D54E21}
+        .button{background:#f7f7f7;border:1px solid #ccc;color:#555;display:inline-block;text-decoration:none;font-size:9px;line-height:26px;height:28px;margin:0;padding:0 10px 1px;cursor:pointer;-webkit-border-radius:3px;-webkit-appearance:none;border-radius:3px;white-space:nowrap;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-box-shadow:inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);box-shadow:inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);vertical-align:top}
+        .button.button-large{height:29px;line-height:28px;padding:0 12px}
+        .button:focus,.button:hover{background:#fafafa;border-color:#999;color:#222}
+        .button:focus{-webkit-box-shadow:1px 1px 1px rgba(0,0,0,.2);box-shadow:1px 1px 1px rgba(0,0,0,.2)}
+        .button:active{background:#eee;border-color:#999;color:#333;-webkit-box-shadow:inset 0 2px 5px -3px rgba(0,0,0,.5);box-shadow:inset 0 2px 5px -3px rgba(0,0,0,.5)}
+        table{table-layout:auto;border:1px solid #333;empty-cells:show;border-collapse:collapse}
+        th{padding:4px;border:1px solid #333;overflow:hidden;color:#333;background:#eee}
+        td{padding:4px;border:1px solid #333;overflow:hidden;color:#333}
     </style>
 </head>
 <body>

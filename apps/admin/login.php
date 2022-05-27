@@ -17,6 +17,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
-    <img src="/<?php echo $moduel; ?>/vcode?r=<?php=time();?>" style="float:right;border-radius:3px;" height="44" onclick="this.src='/<?php echo $moduel; ?>/vcode?r=<?php=time();?>;" title="点击更换验证码">
+    <img src="/<?=$moduel?>/vcode?r=0.<?=time()?>" style="float:right;border-radius:3px;" height="44" onclick="this.src='/<?=$moduel?>/vcode?r=<?=time()?>;" title="点击更换验证码">
 </body>
 </html>

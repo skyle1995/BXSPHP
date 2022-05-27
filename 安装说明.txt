@@ -1,0 +1,16 @@
+1. 站点目录设置：
+
+设置 public 为站点访问目录
+
+
+2. Nginx环境配置：
+
+设置静态规则为 ThinkPHP
+
+或者复制粘贴以下配置
+
+location / {
+    if (!-e $request_filename){
+        rewrite  ^(.*)$  /index.php?s=$1  last; break;
+    }
+}

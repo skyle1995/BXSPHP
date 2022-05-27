@@ -83,6 +83,7 @@ function new_debase64($str){
  * @return $str     加密后的结果
 */
 function enkay($str,$key,$ofs){
+    $encode = "";
     for ($i=0; $i<strlen($str); $i++) {
         $val = ord($str[$i]);
         $val = ($val + $ofs) ^ $key[$i % count($key)];
@@ -104,7 +105,7 @@ function enkay($str,$key,$ofs){
 */
 function dekay($str,$key,$ofs){
     $row = explode(",",base64_decode($str)); // base64解码并分割字符串
-
+    $decode = "";
     if(is_array($row)){
         foreach ($row as $i=>$v){
             if($v != "" or $v != null){

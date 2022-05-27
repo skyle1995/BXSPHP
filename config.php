@@ -22,7 +22,7 @@ $config = [
         "network" => "网络请求curl高级模式拓展模块",
         "dblibrary" => "数据库模块，必须优先加载！",
         "newtime" => "用于处理转换Y2K38漏洞的时间",
-        "security" => "防CC跨站攻击模块,防止恶意访问",
+        "security" => "防CC跨站攻击模块,防止恶意请求",
         "txprotect" => "反腾讯网址安全检测模块",
     ],
     // 系统配置

@@ -120,12 +120,11 @@ function getHeader($header,$name) {
             if(strpos($val, ": ")){
                 $obj = explode(": ",$val);
                 if($obj[0] == $name){
-                    $ret = $val;
+                    $ret = $obj[1];
                 }
             }
         }
     }
-    
     return $ret;
 }
 

@@ -132,7 +132,7 @@ function md5Verify($prestr, $sign, $signkey) {
  */
 function signVerify($queryArr,$apipid,$apikey){
     $prestr = createLinkstring(argSort(paraFilter($queryArr))); // 将数组还原成字符串
-    $pid=daddslashes($queryArr['pid']);
+    $pid=addslashes_deep($queryArr['pid']);
     if(empty($pid)) exit(json_str(array("code"=>"-1","msg"=>"PID信息未找到")));
     if($pid != $apipid) exit(json_str(array("code"=>"-1","msg"=>"PID信息不匹配")));
     // exit(md5Sign($prestr,$conf['api_key']));
